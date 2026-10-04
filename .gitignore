@@ -1,0 +1,62 @@
+# This folder mixes the talk with large local data and private drafts.
+# Ignore everything at every depth; allow only slide sources and hosted assets.
+# Add new slide dependencies to the allowlist below.
+/**
+
+# Deck sources
+!/.gitignore
+!/README.md
+!/AGENTS.md
+!/index.qmd
+!/references.bib
+!/_quarto.yml
+!/gp-quarto.css
+!/gp-quarto.js
+
+# HTML includes used by _quarto.yml
+!/includes/
+!/includes/after-body.html
+!/includes/gp-after-body.html
+!/includes/gp-head.html
+!/includes/in-header.html
+
+# Template styles and runtime
+!/gp-template/
+!/gp-template/css/
+!/gp-template/css/grid-protocol.css
+!/gp-template/css/gp-image-fx.css
+!/gp-template/js/
+!/gp-template/js/grid-protocol.js
+!/gp-template/js/gp-paper-shaders-halftone.js
+
+# Quarto's configured modal extension
+!/_extensions/
+!/_extensions/martinomagnifico/
+!/_extensions/martinomagnifico/multimodal/
+!/_extensions/martinomagnifico/multimodal/_extension.yml
+!/_extensions/martinomagnifico/multimodal/multimodal.css
+!/_extensions/martinomagnifico/multimodal/multimodal.js
+
+# Figures used by the deck (allowlist each file, e.g. !/images/figure.svg)
+!/images/
+!/images/stopped-clock.jpg
+!/images/workflow_v4.png
+!/images/heatmap.html
+!/images/pareto.html
+
+# Rendered site (hosted)
+!/index.html
+!/index_files/
+!/index_files/libs/
+!/index_files/libs/**
+
+# Never commit OS/tool junk even inside whitelisted dirs
+.DS_Store
+.quarto/
+*.bak
+*.backup
+*.tmp
+*.swp
+*~
+
+/.quarto/

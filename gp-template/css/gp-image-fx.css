@@ -1,0 +1,75 @@
+/* Scholarly Folio image effects
+   - Muted tone filters
+   - Paper Shaders halftone wrappers
+*/
+
+.gp-img-ink {
+  mix-blend-mode: multiply;
+}
+
+.gp-img-pop {
+  filter: contrast(1.08) saturate(0.78) brightness(1.02);
+}
+
+.gp-img-tone-bw {
+  filter: grayscale(1) contrast(1.22) brightness(0.98);
+}
+
+.gp-img-tone-navy {
+  filter: grayscale(1) sepia(0.55) hue-rotate(175deg) saturate(1.15) contrast(1.16) brightness(0.96);
+}
+
+.gp-img-tone-steel {
+  filter: grayscale(1) sepia(0.45) hue-rotate(180deg) saturate(0.92) contrast(1.14) brightness(0.97);
+}
+
+.gp-img-tone-olive {
+  filter: grayscale(1) sepia(0.65) hue-rotate(54deg) saturate(0.92) contrast(1.15) brightness(0.96);
+}
+
+.gp-img-tone-amber {
+  filter: grayscale(1) sepia(0.72) hue-rotate(345deg) saturate(0.95) contrast(1.14) brightness(0.98);
+}
+
+.gp-halftone {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--gp-paper-soft);
+}
+
+.gp-halftone > p,
+.gp-halftone > figure,
+.gp-halftone > div {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gp-halftone .gp-frame-img {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 120ms ease;
+}
+
+/* Keep base image visible as a fallback; shader canvas overlays it when ready. */
+.gp-halftone.gp-halftone--ready .gp-frame-img {
+  opacity: 1;
+}
+
+/* Paper Shaders injects a canvas with z-index:-1 by default.
+   We bring it forward so the shader output becomes the visible image layer. */
+.gp-halftone[data-paper-shader] > canvas {
+  z-index: 2 !important;
+  pointer-events: none;
+}
+
+.gp-halftone.gp-halftone--error {
+  outline: 2px dashed rgba(180, 30, 30, 0.45);
+  outline-offset: -2px;
+}

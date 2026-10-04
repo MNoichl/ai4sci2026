@@ -1,0 +1,128 @@
+<script>
+(function waitForReveal(){
+    if (!window.Reveal || !Reveal.on) return setTimeout(waitForReveal, 30);
+
+    // Open when the inline modal fragment becomes visible (forward OR backward)
+    Reveal.on('fragmentshown', (e) => {
+        if (e.fragment.classList.contains('opens-modal')) {
+            e.fragment.click();
+            return;
+        }
+        const trigger = e.fragment.querySelector && e.fragment.querySelector('.opens-modal');
+        if (!trigger) return;
+        if (trigger.classList.contains('fragment') && !trigger.classList.contains('current-fragment')) return;
+        trigger.click();
+    });
+
+    // While modal is open: ArrowRight / Enter => close (don't advance)
+    document.addEventListener('keydown', (ev) => {
+        const deck = document.querySelector('.reveal');
+        const open = deck && deck.classList.contains('multimodal-open');
+        if (open && (ev.key === 'ArrowRight' || ev.key === 'Enter')) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+        }
+    }, { capture: true });
+
+    // After a click inside an iframe pop-up, keys go to the embedded page and never
+    // reach the deck. Forward ArrowRight / Enter so they still close the pop-up, and
+    // hand focus back to the deck. Escape stays with the page (e.g. to release a pin).
+    document.addEventListener('load', (ev) => {
+        const frame = ev.target;
+        if (!(frame instanceof HTMLIFrameElement) || !frame.closest('.multimodal')) return;
+        try {
+            frame.contentWindow.addEventListener('keydown', (e) => {
+                if (e.key !== 'ArrowRight' && e.key !== 'Enter') return;
+                e.preventDefault();
+                window.focus();
+                document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+            });
+        } catch (err) { /* cross-origin page (e.g. file://): its keys stay inside it */ }
+    }, true);
+})();
+</script>
+<script>
+// Per-panel pan/zoom for .gp-panzoom containers (multi-panel exhibits).
+(function initGpPanZoom(){
+    const MAX_SCALE = 60;
+
+    function setup(container){
+        const img = container.querySelector('img');
+        if (!img) return;
+        let scale = 1, tx = 0, ty = 0;
+        let dragging = false, lastX = 0, lastY = 0;
+
+        const apply = () => {
+            img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+        };
+
+        // Reveal scales the whole deck with a CSS transform; convert client px
+        // into the container's unscaled coordinate space.
+        const unscale = (rect) => ({
+            x: container.offsetWidth / rect.width,
+            y: container.offsetHeight / rect.height,
+        });
+
+        container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const rect = container.getBoundingClientRect();
+            const u = unscale(rect);
+            const next = Math.min(MAX_SCALE, Math.max(1, scale * Math.exp(-e.deltaY * 0.002)));
+            const ratio = next / scale;
+            const cx = (e.clientX - rect.left) * u.x;
+            const cy = (e.clientY - rect.top) * u.y;
+            tx = cx - ratio * (cx - tx);
+            ty = cy - ratio * (cy - ty);
+            scale = next;
+            if (scale === 1) { tx = 0; ty = 0; }
+            apply();
+        }, { passive: false });
+
+        container.addEventListener('pointerdown', (e) => {
+            dragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            container.setPointerCapture(e.pointerId);
+            container.classList.add('is-dragging');
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        container.addEventListener('pointermove', (e) => {
+            if (!dragging) return;
+            const u = unscale(container.getBoundingClientRect());
+            tx += (e.clientX - lastX) * u.x;
+            ty += (e.clientY - lastY) * u.y;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            apply();
+        });
+
+        ['pointerup', 'pointercancel'].forEach((type) => {
+            container.addEventListener(type, () => {
+                dragging = false;
+                container.classList.remove('is-dragging');
+            });
+        });
+
+        container.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            scale = 1; tx = 0; ty = 0;
+            apply();
+        });
+    }
+
+    function init(){
+        document.querySelectorAll('.gp-panzoom').forEach(setup);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>

@@ -1,0 +1,43 @@
+project:
+  render:
+    - index.qmd
+
+format:
+  revealjs:
+    title-slide: false
+    scroll: false
+    menu: false
+    hash: true
+    history: true
+    controls: false
+    progress: false
+    slide-number: false
+    controls-layout: edges
+    transition: none
+    background-transition: none
+    slide-level: 1
+    navigation-mode: linear
+    auto-stretch: false
+    incremental: false
+    width: 1920
+    height: 1080
+    margin: 0.04
+    min-scale: 0.2
+    max-scale: 1.6
+    theme:
+      - default
+    css:
+      - gp-template/css/grid-protocol.css
+      - gp-template/css/gp-image-fx.css
+      - gp-quarto.css
+    include-in-header:
+      - includes/gp-head.html
+      - includes/in-header.html
+    include-after-body:
+      - includes/gp-after-body.html
+      - includes/after-body.html
+    revealjs-plugins:
+      - multimodal
+    multimodal:
+      overlaycolor: "rgba(0,0,0,0.55)"
+      radius: "0"

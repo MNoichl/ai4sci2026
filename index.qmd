@@ -1,0 +1,119 @@
+---
+pagetitle: "Towards AI generated Philosophy through Autoformalization - AI4Humanities & Social Sciences, Mainz"
+bibliography:
+  - references.bib
+cite-method: citeproc
+link-citations: false
+---
+# Towards AI generated Philosophy through Autoformalization {layout="title" data-gp-slug="AI Philosophy" data-gp-kicker="AI 4 Science 2026 / Mainz" data-gp-code="Towards AI generated Philosophy through Autoformalization" data-gp-section=""}
+
+::: {.gp-subtitle}
+AI4Humanities & Social Sciences
+:::
+
+::: {.gp-meta-grid}
+::: {.gp-block}
+<span class="gp-label">Author</span> Maximilian Noichl
+:::
+::: {.gp-block}
+<span class="gp-label">Affiliation</span> Utrecht University
+:::
+::: {.gp-block}
+<span class="gp-label">Venue & date</span> AI 4 Science, Mainz<br>5 October 2026
+:::
+:::
+
+
+
+# Introduction {data-gp-section="Introduction"}
+
+* Doctoral candidate at Utrecht University in theoretical philosophy.
+* Data-driven philosophy, philosophy *with* AI, complex collective cognition, philosophy of science.
+* To follow along: [**maxnoichl.eu/talk**](https://maxnoichl.eu/talk)
+* *Towards AI generated Philosophy through Autoformalization*
+
+<!-- # Why would we want this? -->
+
+# How do we get *good* AI generated philosophy?
+
+* Out-of-the-box AI-generated philosophy tends to be *cliché/slop*.
+* AI tends to shine in "verifiable" domains (coding & math), which provide signal for 'hillclimbing'.
+* How can we phrase philosophy that way?
+
+::: aside
+[@jiangArtificialHivemindOpenEnded2025; @zhangVerbalizedSamplingHow2026; @kirkUnderstandingEffectsRLHF2024; @weiAsymmetryVerificationVerifiers2025; @guoDeepSeekR1IncentivizesReasoning2025; @lambertTulu3Pushing2024; @wuAutoformalizationLargeLanguage2022; @fitelsonStepsComputationalMetaphysics2007]
+:::
+
+
+# Philosophical Theories {layout="half" data-gp-section="Knowledge"}
+
+:::: {.gp-two-col .gp-two-col--side-exhibit}
+::: {.gp-half-text}
+**What is knowledge?**
+
+* Let's say: **Knowledge = justified true belief (JTB).**
+* Gettier cases: something is wrong with justification alone.
+* How about: **Knowledge = JTB + no false lemmas.**
+* Philosophy, under this view: finding coherent conceptual schemes.
+
+:::
+
+::: {.gp-side-exhibit data-gp-after-item="1"}
+```{=html}
+<figure class="gp-figure">
+  <img src="images/stopped-clock.jpg" alt="Painting of a long-case clock in an empty, flooded room, with a bentwood chair and a paper boat">
+  <figcaption>Russell's stopped clock: true and justified, but not knowledge.</figcaption>
+</figure>
+```
+:::
+::::
+
+::: aside
+[@russellHumanKnowledgeIts1948; @gettierJustifiedTrueBelief1963; @clarkKnowledgeGroundsComment1963]
+:::
+
+
+# {data-gp-section="Philosophy"}
+
+* Think of philosophy as a game of demanding 
+
+# Proposed workflow {.gp-dense data-gp-section="Workflow"}
+
+1. Research the philosophical landscape: theories & desiderata.
+2. Evaluate theories on desiderata using independent formalization (Z3). [Heatmap](#){.opens-modal data-modal-type="iframe" data-modal-url="images/heatmap.html" data-modal-navblock="true"}
+3. But: "Monster-theories!" (conjunctions).
+   * Force a simplicity constraint.
+4. Pareto frontier: simpler theories that solve more problems. [Pareto](#){.opens-modal data-modal-type="iframe" data-modal-url="images/pareto.html" data-modal-navblock="true"}
+5. Run research flow against the criteria: come up with a theory (verbalized sampling), get feedback, revise. [Workflow](#){.opens-modal data-modal-type="image" data-modal-url="images/workflow_v4.png" data-modal-navblock="true"}
+
+::: aside
+[@zhangVerbalizedSamplingHow2026]
+:::
+
+
+<!-- # A philosophical landscape {data-gp-section="Landscape"}
+
+# Some results {data-gp-section="Results"} -->
+
+# Problems & future work {data-gp-section="Outlook"}
+
+* Lack of "deep creativity" (dependent on landscape -> counterexample-mining)
+* Evaluation is hard (but cf. philosophy bench CITE)
+* No tieback to literature (novelty)
+* Understanding our results? Back to essays?
+
+
+
+
+# Literature {layout="references" data-gp-section="References"}
+
+::: {#refs}
+:::
+
+
+
+# Why would we want this?
+
+* Better philosophy? 
+* Understand better what we do when we do philosophy?
+(Delta between AI and human philosophy)

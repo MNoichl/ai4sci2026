@@ -1,0 +1,540 @@
+/* Quarto bridge overrides for the Scholarly Folio visual system. */
+
+:root {
+  --r-background-color: var(--gp-paper);
+  --r-main-color: var(--gp-ink);
+  --r-heading-color: var(--gp-ink);
+  --r-link-color: var(--gp-accent);
+  --r-link-color-hover: var(--gp-ink);
+  --r-controls-color: var(--gp-ink);
+  --r-selection-background-color: rgba(150, 61, 44, 0.18);
+  --gp-footer-text: "NOICHL / AI 4 SCIENCE 2026 / MAINZ";
+}
+
+.reveal .slide-menu-button,
+.reveal .slide-menu-wrapper,
+.reveal .quarto-navigation-tool {
+  display: none !important;
+}
+
+.reveal .controls {
+  color: var(--gp-ink) !important;
+}
+
+.reveal .controls button {
+  color: var(--gp-ink) !important;
+  opacity: 0.62;
+}
+
+.reveal .controls button.enabled {
+  opacity: 0.9;
+}
+
+.reveal .controls .controls-arrow {
+  border-color: currentColor !important;
+}
+
+.reveal .slides section.gp-title > h1.gp-title-heading,
+.reveal .slides section[data-layout="title"] > h1,
+.reveal .slides section.gp-title > h1 {
+  display: none !important;
+}
+
+.reveal .slides section.gp-slide:not(.gp-title):not(.gp-divider):not(.gp-claim):not(.gp-quote-slide) > h1 {
+  margin-bottom: 0;
+}
+
+.reveal .slides section.gp-slide ul.gp-list,
+.reveal .slides section.gp-slide ol.gp-list {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.reveal .slides section.gp-slide ul.gp-list > li,
+.reveal .slides section.gp-slide ol.gp-list > li {
+  list-style: none !important;
+}
+
+.reveal .slides section.gp-slide ul.gp-list > li::marker,
+.reveal .slides section.gp-slide ol.gp-list > li::marker {
+  content: "";
+}
+
+.reveal .slides section.gp-slide a,
+.reveal .slides section.gp-slide a:visited {
+  color: var(--gp-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(150, 61, 44, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+.reveal .slides section.gp-slide a:hover,
+.reveal .slides section.gp-slide a:focus-visible {
+  color: var(--gp-ink);
+  text-decoration-color: var(--gp-ink);
+}
+
+.reveal .slides section.gp-slide > :not(.gp-cites) .citation {
+  display: none !important;
+}
+
+.reveal .slides section.gp-slide > .gp-cites .citation,
+.reveal .slides section.gp-slide > .gp-cites a {
+  color: var(--gp-ink);
+  text-decoration: none;
+}
+
+.reveal .slides section.gp-slide > .gp-cites .citation a {
+  color: inherit;
+}
+
+.reveal .slides section.gp-slide > .gp-cites p {
+  display: inline;
+  margin: 0;
+}
+
+.reveal .slides section.gp-slide > .gp-cites {
+  bottom: calc(var(--gp-pad-y) + 52px);
+  padding-right: 0;
+  font-size: 17px;
+  line-height: 1.16;
+}
+
+.reveal .slides section.gp-slide .fragment.fade-up,
+.reveal .slides section.gp-slide .fragment.fade-in {
+  transition-duration: 260ms;
+}
+
+.reveal .slides section.gp-slide .gp-modal-trigger,
+.reveal .slides section.gp-slide .gp-modal-trigger:visited {
+  color: var(--gp-accent) !important;
+  text-decoration: none !important;
+}
+
+.reveal .slides section.gp-slide .gp-modal-trigger:hover,
+.reveal .slides section.gp-slide .gp-modal-trigger:focus-visible {
+  color: var(--gp-ink) !important;
+  text-decoration: none !important;
+}
+
+.reveal .multimodal {
+  --mm-overlaycolor: rgba(25, 25, 20, 0.52);
+  --mm-borderwidth: 1px;
+  --mm-bordercolor: var(--gp-rule-strong);
+  --mm-outerradius: 0;
+  --mm-shadow: 0 28px 70px rgba(25, 25, 20, 0.24);
+  --mm-modal-background: var(--gp-paper-soft);
+}
+
+.reveal .multimodal .mm-max .mm-dialog {
+  border: 1px solid var(--gp-rule-strong) !important;
+  border-radius: 0 !important;
+  background: var(--gp-paper-soft) !important;
+  box-shadow: 0 28px 70px rgba(25, 25, 20, 0.24) !important;
+}
+
+.reveal .multimodal .mm-max .mm-dialog::before {
+  content: none !important;
+  display: none !important;
+}
+
+.reveal .multimodal .mm-max .mm-body {
+  border-radius: 0 !important;
+  background: var(--gp-paper-soft) !important;
+}
+
+/* Image modals (e.g. paper figures with transparent backgrounds) sit on the
+   slide paper tone, so the graphics match the deck background. */
+.reveal .multimodal[data-modal-type="image"] .mm-max .mm-dialog,
+.reveal .multimodal[data-modal-type="image"] .mm-max .mm-body,
+.reveal .multimodal[data-modal-type="image"] .mm-max .mm-body img {
+  background: var(--gp-paper) !important;
+}
+
+/* Figures exported on white blend into the paper instead of sitting on a white card. */
+.reveal .multimodal[data-modal-type="image"] .mm-max img.mm-body {
+  mix-blend-mode: multiply;
+}
+
+.reveal .multimodal .mm-close {
+  top: -1px;
+  right: -1px;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  overflow: hidden;
+  border: 0 !important;
+  border-left: 1px solid var(--gp-rule-strong) !important;
+  border-bottom: 1px solid var(--gp-rule-strong) !important;
+  border-radius: 0 !important;
+  background: var(--gp-paper-soft) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.reveal .multimodal .mm-close svg {
+  display: none !important;
+}
+
+.reveal .multimodal .mm-close::before,
+.reveal .multimodal .mm-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 1px;
+  background: var(--gp-ink);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.reveal .multimodal .mm-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.reveal .multimodal .mm-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.reveal .multimodal .mm-close:hover,
+.reveal .multimodal .mm-close:focus-visible {
+  background: var(--gp-sand) !important;
+}
+
+.reveal .multimodal .mm-close:focus-visible {
+  outline: 2px solid var(--gp-accent);
+  outline-offset: 2px;
+}
+
+.reveal .multimodal .mm-close:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.reveal .slides section.gp-half .gp-two-col,
+.reveal .slides section.gp-half .columns {
+  max-width: var(--gp-content-w);
+}
+
+.reveal .slides section.gp-half .gp-list {
+  max-width: 100%;
+  margin-top: 48px;
+}
+
+.reveal .slides section.gp-half > h1 + .gp-accent-bar + .columns,
+.reveal .slides section.gp-half > h1 + .columns,
+.reveal .slides section.gp-half > h1 + .gp-accent-bar + .gp-two-col,
+.reveal .slides section.gp-half > h1 + .gp-two-col,
+.reveal .slides section.gp-table-slide > h1 + .gp-accent-bar + table,
+.reveal .slides section.gp-table-slide > h1 + table,
+.reveal .slides section.gp-table-slide > h1 + .gp-accent-bar + .gp-chart,
+.reveal .slides section.gp-table-slide > h1 + .gp-chart,
+.reveal .slides section.gp-exhibit > h1 + .gp-accent-bar + .gp-figure,
+.reveal .slides section.gp-exhibit > h1 + .gp-figure {
+  margin-top: 72px;
+}
+
+.reveal .slides section.gp-half .gp-figure {
+  align-self: start;
+}
+
+/* Half slide with a large square exhibit pinned to the right edge, running
+   from the heading down to the citation band. */
+.reveal .slides section.gp-half {
+  --gp-side-exhibit-w: 720px;
+}
+
+.reveal .slides section.gp-half .gp-two-col.gp-two-col--side-exhibit {
+  display: block;
+  position: static !important;
+  max-width: calc(100% - var(--gp-side-exhibit-w) - 72px);
+}
+
+.reveal .slides section.gp-half .gp-side-exhibit {
+  position: absolute;
+  top: calc(var(--gp-pad-y) + var(--gp-header-h));
+  right: var(--gp-pad-x);
+  width: var(--gp-side-exhibit-w);
+}
+
+.reveal .slides section.gp-half .gp-side-exhibit img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  border: 1px solid var(--gp-ink);
+  object-fit: cover;
+}
+
+/* Talk title needs a wider, slightly smaller display title. */
+.reveal .slides section.gp-title .gp-code {
+  max-width: 24ch;
+  font-size: 84px;
+}
+
+.reveal .slides section.gp-title .gp-subtitle {
+  max-width: 44ch;
+}
+
+/* Denser bullet slides for longer content. */
+.reveal .slides section.gp-slide.gp-dense {
+  --gp-list-size: 36px;
+}
+
+.reveal .slides section.gp-slide.gp-dense .gp-list {
+  max-width: 1100px;
+}
+
+.reveal .slides section.gp-slide.gp-dense .gp-list > li {
+  margin: 12px 0;
+}
+
+/* References can exceed the slide; scroll them subtly. */
+.reveal .slides section.gp-references #refs {
+  max-height: 740px;
+  overflow-y: auto;
+  padding-right: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gp-rule-strong) transparent;
+}
+
+.reveal .slides section.gp-references #refs::-webkit-scrollbar {
+  width: 5px;
+}
+
+.reveal .slides section.gp-references #refs::-webkit-scrollbar-thumb {
+  background: var(--gp-rule-strong);
+}
+
+.reveal .slides section.gp-references #refs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Full-bleed three-panel exhibit with pan/zoom (.gp-schemes-full slide).
+   Overrides all slide chrome (running head, marks, folio, corner matrix). */
+.reveal .slides section.gp-schemes-full {
+  padding: 0;
+}
+
+.reveal .slides section.gp-schemes-full::before,
+.reveal .slides section.gp-schemes-full::after {
+  display: none;
+}
+
+.reveal .slides section.gp-schemes-full > .gp-marks,
+.reveal .slides section.gp-schemes-full > .gp-corner-matrix,
+.reveal .slides section.gp-schemes-full > .gp-kicker,
+.reveal .slides section.gp-schemes-full > .gp-accent-bar,
+.reveal .slides section.gp-schemes-full > h1 {
+  display: none;
+}
+
+.reveal .slides section.gp-schemes-full .gp-scheme-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  width: 1920px;
+  height: 1080px;
+  margin: 0;
+}
+
+.reveal .slides section.gp-schemes-full .gp-scheme-panel {
+  position: relative;
+  overflow: hidden;
+  border-left: 2px solid var(--gp-ink);
+}
+
+.reveal .slides section.gp-schemes-full .gp-scheme-panel:first-child {
+  border-left: none;
+}
+
+.reveal .slides section.gp-schemes-full .gp-scheme-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 16px 22px;
+  font-family: var(--gp-label);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gp-accent);
+  pointer-events: none;
+}
+
+.reveal .slides section.gp-schemes-full .gp-scheme-hint {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 12px 22px;
+  font-family: var(--gp-label);
+  font-size: 13px;
+  font-weight: 550;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gp-muted);
+  pointer-events: none;
+}
+
+.gp-panzoom {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--gp-paper);
+  cursor: grab;
+  touch-action: none;
+}
+
+.gp-panzoom.is-dragging {
+  cursor: grabbing;
+}
+
+.gp-panzoom img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: 0 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.reveal .slides section.gp-exhibit .gp-frame,
+.reveal .slides section.gp-half .gp-frame {
+  overflow: hidden;
+}
+
+.reveal .slides section.gp-exhibit.gp-exhibit-xl {
+  padding-right: 54px;
+  padding-bottom: 98px;
+  padding-left: 54px;
+}
+
+.reveal .slides section.gp-exhibit.gp-exhibit-xl > h1:empty,
+.reveal .slides section.gp-exhibit.gp-exhibit-xl > h1:empty + .gp-accent-bar {
+  display: none !important;
+}
+
+.reveal .slides section.gp-exhibit.gp-exhibit-xl > .gp-figure,
+.reveal .slides section.gp-exhibit.gp-exhibit-xl > h1 + .gp-accent-bar + .gp-figure,
+.reveal .slides section.gp-exhibit.gp-exhibit-xl > h1 + .gp-figure {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+}
+
+.reveal .slides section.gp-exhibit.gp-exhibit-xl .gp-frame--embed .gp-media--exhibit,
+.reveal .slides section.gp-exhibit.gp-exhibit-xl .gp-media--exhibit {
+  height: 850px;
+}
+
+.reveal .slides section.gp-slide > .gp-embed-fallback {
+  margin-top: 10px;
+  color: var(--gp-muted);
+  font-family: var(--gp-label);
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+}
+
+.reveal .slides section.gp-slide > .gp-embed-fallback p {
+  margin: 0;
+}
+
+.reveal .slides section.gp-half .gp-figure--qr .gp-frame {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background: transparent;
+  line-height: 0;
+}
+
+.reveal .slides section.gp-half .gp-figure--qr .gp-frame-embed {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0;
+  border: 0;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+}
+
+.reveal .slides section.gp-references > h1 {
+  font-size: 54px;
+  line-height: 1;
+}
+
+.reveal .slides section.gp-references .csl-bib-body {
+  max-width: 1480px;
+  margin-top: 76px;
+  margin-left: 0;
+  columns: 2 !important;
+  column-count: 2 !important;
+  column-gap: 56px;
+  column-fill: balance;
+  text-indent: 0;
+}
+
+.reveal .slides section.gp-references .csl-bib-body.hanging-indent {
+  margin-left: 0;
+  text-indent: 0;
+}
+
+.reveal .slides section.gp-references .csl-entry {
+  clear: none;
+  break-inside: avoid-column;
+  page-break-inside: avoid;
+  margin: 0 0 12px;
+  color: var(--gp-ink2);
+  font-family: var(--gp-serif);
+  font-size: 21px;
+  line-height: 1.32;
+  text-indent: 0;
+}
+
+.reveal .slides section.gp-references .csl-entry a {
+  color: var(--gp-accent);
+}
+
+.reveal table:not(.gp-table):not(.gp-comparison) {
+  width: 100%;
+  max-width: 1400px;
+  border-collapse: collapse;
+  font-family: var(--gp-serif);
+  font-size: 23px;
+}
+
+.reveal table:not(.gp-table):not(.gp-comparison) th,
+.reveal table:not(.gp-table):not(.gp-comparison) td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--gp-rule);
+}
+
+.reveal table:not(.gp-table):not(.gp-comparison) th {
+  color: var(--gp-accent);
+  font-family: var(--gp-label);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1320px) {
+  .reveal .slides section.gp-references .csl-bib-body {
+    columns: 1 !important;
+    column-count: 1 !important;
+  }
+}

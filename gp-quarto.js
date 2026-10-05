@@ -374,7 +374,7 @@
     const items = [];
     selectors.forEach((selector) => {
       section.querySelectorAll(selector).forEach((item) => {
-        if (seen.has(item)) return;
+        if (seen.has(item) || item.parentElement.closest("li")) return;
         seen.add(item);
         items.push(item);
       });
@@ -404,12 +404,22 @@
     const listItems = getDirectListItems(section);
     if (listItems.length < 2) return;
 
+    // Each list item is a step; pop-up buttons inside it follow as steps of their
+    // own, in order, and `data-gp-after-item` blocks come after those.
     let nextIndex = 0;
+    const afterIndex = new Map();
     listItems.forEach((item) => {
       addClass(item, "fragment");
       addClass(item, "fade-up");
-      item.dataset.fragmentIndex = String(nextIndex);
-      nextIndex += 2;
+      item.dataset.fragmentIndex = String(nextIndex++);
+      item.querySelectorAll(".opens-modal").forEach((trigger) => {
+        addClass(trigger, "fragment");
+        trigger.dataset.fragmentIndex = String(nextIndex++);
+        if (trigger.tagName === "A" && !String(trigger.getAttribute("href") || "").trim()) {
+          trigger.setAttribute("href", "#");
+        }
+      });
+      afterIndex.set(item, nextIndex++);
     });
 
     // `data-gp-after-item="N"` reveals a block right after list item N (1-based).
@@ -418,7 +428,16 @@
       if (!item) return;
       addClass(node, "fragment");
       addClass(node, "fade-in");
-      node.dataset.fragmentIndex = String(Number.parseInt(item.dataset.fragmentIndex, 10) + 1);
+      node.dataset.fragmentIndex = String(afterIndex.get(item));
+    });
+
+    // `data-gp-with-item="N"` reveals a block together with list item N (1-based).
+    section.querySelectorAll("[data-gp-with-item]").forEach((node) => {
+      const item = listItems[Number.parseInt(String(node.dataset.gpWithItem || ""), 10) - 1];
+      if (!item) return;
+      addClass(node, "fragment");
+      addClass(node, "fade-in");
+      node.dataset.fragmentIndex = item.dataset.fragmentIndex;
     });
 
     const figures = collectRevealFigures(section);
@@ -427,20 +446,6 @@
       addClass(figure, "fade-in");
       figure.dataset.fragmentIndex = String(nextIndex);
       nextIndex += 1;
-    });
-
-    listItems.forEach((item) => {
-      const itemIndex = Number.parseInt(String(item.dataset.fragmentIndex || ""), 10);
-      item.querySelectorAll(".opens-modal").forEach((trigger) => {
-        addClass(trigger, "fragment");
-        addClass(trigger, "gp-modal-trigger");
-        if (Number.isFinite(itemIndex)) {
-          trigger.dataset.fragmentIndex = String(itemIndex + 1);
-        }
-        if (trigger.tagName === "A" && !String(trigger.getAttribute("href") || "").trim()) {
-          trigger.setAttribute("href", "#");
-        }
-      });
     });
   }
 

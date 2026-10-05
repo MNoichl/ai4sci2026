@@ -33,32 +33,41 @@ AI4Humanities & Social Sciences
 * *Towards AI generated Philosophy through Autoformalization*
 
 <!-- # Why would we want this? -->
+# Why would we want this?
 
-# How do we get *good* AI generated philosophy?
+* Better (AI-assisted) philosophy?
+* Understand better how we do philosophy!
+* Understanding the differences between AI-generated and human philosophy!
+  * Alignment purposes?
 
-* Out-of-the-box AI-generated philosophy tends to be *cliché/slop*.
+# How do we get *good* AI-generated philosophy?
+
+* Out-of-the-box AI-generated philosophy tends to be *cliché/slop/repetitive*...
 * AI tends to shine in "verifiable" domains (coding & math), which provide signal for 'hillclimbing'.
 * How can we phrase philosophy that way?
 
 ::: aside
-[@jiangArtificialHivemindOpenEnded2025; @zhangVerbalizedSamplingHow2026; @kirkUnderstandingEffectsRLHF2024; @weiAsymmetryVerificationVerifiers2025; @guoDeepSeekR1IncentivizesReasoning2025; @lambertTulu3Pushing2024; @wuAutoformalizationLargeLanguage2022; @fitelsonStepsComputationalMetaphysics2007]
+[@kirkUnderstandingEffectsRLHF2024; @guoDeepSeekR1IncentivizesReasoning2025; @wuAutoformalizationLargeLanguage2022]
 :::
+<!-- @lambertTulu3Pushing2024; @fitelsonStepsComputationalMetaphysics2007 -->
 
 
-# Philosophical Theories {layout="half" data-gp-section="Knowledge"}
+# Philosophical theories {layout="half" .gp-dense data-gp-section="Knowledge"}
 
 :::: {.gp-two-col .gp-two-col--side-exhibit}
 ::: {.gp-half-text}
 **What is knowledge?**
 
 * Let's say: **Knowledge = justified true belief (JTB).**
+  * As a formula: knows ⇔ true ∧ believes ∧ justified
 * Gettier cases: something is wrong with justification alone.
+  * Russell's clock: true, believed & justified → *knows*, but we disagree!
 * How about: **Knowledge = JTB + no false lemmas.**
-* Philosophy, under this view: finding coherent conceptual schemes.
+* Philosophy, under this view: finding the simplest principles that match our conceptualizations.
 
 :::
 
-::: {.gp-side-exhibit data-gp-after-item="1"}
+::: {.gp-side-exhibit data-gp-with-item="2"}
 ```{=html}
 <figure class="gp-figure">
   <img src="images/stopped-clock.jpg" alt="Painting of a long-case clock in an empty, flooded room, with a bentwood chair and a paper boat">
@@ -73,34 +82,41 @@ AI4Humanities & Social Sciences
 :::
 
 
-# {data-gp-section="Philosophy"}
+# Our workflow {.gp-dense data-gp-section="Workflow"}
 
-* Think of philosophy as a game of demanding 
-
-# Proposed workflow {.gp-dense data-gp-section="Workflow"}
-
-1. Research the philosophical landscape: theories & desiderata.
-2. Evaluate theories on desiderata using independent formalization (Z3). [Heatmap](#){.opens-modal data-modal-type="iframe" data-modal-url="images/heatmap.html" data-modal-navblock="true"}
-3. But: "Monster-theories!" (conjunctions).
+1. Research the philosophical landscape: theories & desiderata (OpenAI Deep Research or Codex + database).
+2. Evaluate theories on desiderata using independent formalization (Z3). [Heatmap](#){.opens-modal data-modal-type="iframe" data-modal-url="images/heatmap.html" data-modal-navblock="true" data-pdf-click="Stopped clock"}
+3. But: "Monster-theories"!
    * Force a simplicity constraint.
-4. Pareto frontier: simpler theories that solve more problems. [Pareto](#){.opens-modal data-modal-type="iframe" data-modal-url="images/pareto.html" data-modal-navblock="true"}
-5. Run research flow against the criteria: come up with a theory (verbalized sampling), get feedback, revise. [Workflow](#){.opens-modal data-modal-type="image" data-modal-url="images/workflow_v4.png" data-modal-navblock="true"}
+4. Pareto frontier: simpler theories that solve more problems. [Pareto](#){.opens-modal data-modal-type="iframe" data-modal-url="images/pareto.html" data-modal-navblock="true" data-modal-pin="Traditional justified true belief"} 
+5. Run research flow against the criteria: come up with a theory (verbalized sampling), get feedback, revise. [Workflow](#){.opens-modal data-modal-type="image" data-modal-url="images/workflow_v4.png" data-modal-navblock="true"} 
+6. Optimize along the frontier. [Pareto run](#){.opens-modal data-modal-type="iframe" data-modal-url="images/pareto_run.html" data-modal-navblock="true" data-modal-pin="#6 Content-producing"}
 
 ::: aside
-[@zhangVerbalizedSamplingHow2026]
+[@zhangVerbalizedSamplingHow2026]. All runs use a mix of OpenAI's Astra 6.1 & Sol 5.5
 :::
 
 
-<!-- # A philosophical landscape {data-gp-section="Landscape"}
+# Early results {data-gp-section="Results"}
 
-# Some results {data-gp-section="Results"} -->
+
+* For 10 domains (Knowledge, Scientific Explanation, Moral Responsibility, etc.): 26 of 95 literature theories are at the frontier (27% vs. 19% under chance). [Domains](#){.opens-modal data-modal-type="image" data-modal-url="images/pareto_domains.png" data-modal-navblock="true"} 
+* Does it work? 
+* 52 of 100 AI-proposals make it past the frontier. [Domains run](#){.opens-modal data-modal-type="image" data-modal-url="images/pareto_domains_run.png" data-modal-navblock="true"}
+* Some results are interesting, but we still get a lot of "cheating"; literature theories are under-optimized.
+
 
 # Problems & future work {data-gp-section="Outlook"}
 
-* Lack of "deep creativity" (dependent on landscape -> counterexample-mining)
-* Evaluation is hard (but cf. philosophy bench CITE)
+* Lack of "deep creativity" (dependent on landscape → counterexample mining)
+* Evaluation is hard (but cf. PhilosophyBench; AI Philosophy Competition)
 * No tieback to literature (novelty)
 * Understanding our results? Back to essays?
+* **Thank you!**
+
+::: aside
+[@philosophybench2026; @goodsellAIPhilosophyCompetition2026]
+:::
 
 
 
@@ -112,8 +128,3 @@ AI4Humanities & Social Sciences
 
 
 
-# Why would we want this?
-
-* Better philosophy? 
-* Understand better what we do when we do philosophy?
-(Delta between AI and human philosophy)

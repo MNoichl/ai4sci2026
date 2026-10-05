@@ -223,6 +223,10 @@
   margin-top: 48px;
 }
 
+.reveal .slides section.gp-half .gp-list .gp-list {
+  margin-top: 6px;
+}
+
 .reveal .slides section.gp-half > h1 + .gp-accent-bar + .columns,
 .reveal .slides section.gp-half > h1 + .columns,
 .reveal .slides section.gp-half > h1 + .gp-accent-bar + .gp-two-col,
@@ -530,11 +534,4 @@
   letter-spacing: 0.1em;
   text-align: left;
   text-transform: uppercase;
-}
-
-@media (max-width: 1320px) {
-  .reveal .slides section.gp-references .csl-bib-body {
-    columns: 1 !important;
-    column-count: 1 !important;
-  }
 }

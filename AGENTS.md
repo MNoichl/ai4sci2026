@@ -35,6 +35,13 @@ quarto preview index.qmd
 
 Use HTTP preview for shader slides. Do not rely on `file://`.
 
+### PDF export
+`python3 tools/export_pdf.py` renders the deck, clicks through it in Chrome and binds every state
+into `export/ai4sci2026_steps.pdf` (one page per click; each pop-up gets its own page where it opens).
+`--mode slides` gives one page per slide, with each pop-up after the slide as it stands when the pop-up opens; `--no-render`, `--contact-sheet`
+and `--pages` skip the render, add a thumbnail overview, or keep the page PNGs. Needs Playwright and
+Chrome (or Playwright's Chromium), and a network connection for the web fonts.
+
 ## Global Behavior (What the System Auto-Does)
 Bridge behavior from `gp-quarto.js`:
 - Adds `gp-slide` to every leaf slide.
@@ -45,7 +52,7 @@ Bridge behavior from `gp-quarto.js`:
 - Adds `gp-list` styles to top-level lists.
 - Builds title/divider scaffolding and accent bars.
 - Normalizes citation text so footer citations are not wrapped in parentheses.
-- Applies list/figure fragments unless `data-gp-fragments="off"`; a block with `data-gp-after-item="N"` is revealed right after list item N.
+- Applies list/figure fragments unless `data-gp-fragments="off"`; a block with `data-gp-after-item="N"` is revealed right after list item N, one with `data-gp-with-item="N"` together with it.
 - Enforces click navigation mode (disables scroll view behavior).
 
 Layout automation from `gp-template/js/grid-protocol.js`:
@@ -113,6 +120,11 @@ Modal types commonly used:
 Notes:
 - Keep `href="#"` for modal anchors.
 - Modal trigger styling is automatic via `.gp-modal-trigger`.
+- Several buttons on one point open one after another, each on its own click.
+- `data-modal-pin="..."` (iframe pop-ups) clicks that item in the embedded page as soon as it opens,
+  e.g. to highlight a point; the value is a CSS selector or the start of the item's text.
+- `data-pdf-click="..."` adds PDF pages after the pop-up with those items clicked (`|` separates several).
+- Embedded pages get `gp-embed.css` (presentation tweaks, e.g. the enlarged heatmap).
 
 ### 4) Citation Footer Apparatus
 Use `aside` blocks:
@@ -203,7 +215,6 @@ Use:
 
 Behavior:
 - Citeproc bibliography is styled as two columns on desktop.
-- Falls back to one column on narrow viewports.
 - Keep references as generated CSL entries; do not hand-format unless necessary.
 - Put `::: {#refs}` / `:::` on the references slide so the bibliography stays there even when backup slides follow it.
 

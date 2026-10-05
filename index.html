@@ -191,30 +191,48 @@
 </ul>
 <!-- # Why would we want this? -->
 </section>
-<section id="how-do-we-get-good-ai-generated-philosophy" class="slide level1">
-<h1>How do we get <em>good</em> AI generated philosophy?</h1>
+<section id="why-would-we-want-this" class="slide level1">
+<h1>Why would we want this?</h1>
 <ul>
-<li>Out-of-the-box AI-generated philosophy tends to be <em>cliché/slop</em>.</li>
+<li>Better (AI-assisted) philosophy?</li>
+<li>Understand better how we do philosophy!</li>
+<li>Understanding the differences between AI-generated and human philosophy!
+<ul>
+<li>Alignment purposes?</li>
+</ul></li>
+</ul>
+</section>
+<section id="how-do-we-get-good-ai-generated-philosophy" class="slide level1">
+<h1>How do we get <em>good</em> AI-generated philosophy?</h1>
+<ul>
+<li>Out-of-the-box AI-generated philosophy tends to be <em>cliché/slop/repetitive</em>…</li>
 <li>AI tends to shine in “verifiable” domains (coding &amp; math), which provide signal for ‘hillclimbing’.</li>
 <li>How can we phrase philosophy that way?</li>
 </ul>
 
+<!-- @lambertTulu3Pushing2024; @fitelsonStepsComputationalMetaphysics2007 -->
 <aside><div>
-<p><span class="citation" data-cites="jiangArtificialHivemindOpenEnded2025 zhangVerbalizedSamplingHow2026 kirkUnderstandingEffectsRLHF2024 weiAsymmetryVerificationVerifiers2025 guoDeepSeekR1IncentivizesReasoning2025 lambertTulu3Pushing2024 wuAutoformalizationLargeLanguage2022 fitelsonStepsComputationalMetaphysics2007">(Jiang et al. 2025; Zhang et al. 2026; Kirk et al. 2024; Wei 2025; Guo et al. 2025; Lambert et al. 2024; Wu et al. 2022; Fitelson and Zalta 2007)</span></p>
+<p><span class="citation" data-cites="kirkUnderstandingEffectsRLHF2024 guoDeepSeekR1IncentivizesReasoning2025 wuAutoformalizationLargeLanguage2022">(Kirk et al. 2024; Guo et al. 2025; Wu et al. 2022)</span></p>
 </div></aside></section>
-<section id="philosophical-theories" class="slide level1" data-layout="half" data-gp-section="Knowledge">
-<h1>Philosophical Theories</h1>
+<section id="philosophical-theories" class="slide level1 gp-dense" data-layout="half" data-gp-section="Knowledge">
+<h1>Philosophical theories</h1>
 <div class="gp-two-col gp-two-col--side-exhibit">
 <div class="gp-half-text">
 <p><strong>What is knowledge?</strong></p>
 <ul>
-<li>Let’s say: <strong>Knowledge = justified true belief (JTB).</strong></li>
-<li>Gettier cases: something is wrong with justification alone.</li>
+<li>Let’s say: <strong>Knowledge = justified true belief (JTB).</strong>
+<ul>
+<li>As a formula: knows ⇔ true ∧ believes ∧ justified</li>
+</ul></li>
+<li>Gettier cases: something is wrong with justification alone.
+<ul>
+<li>Russell’s clock: true, believed &amp; justified → <em>knows</em>, but we disagree!</li>
+</ul></li>
 <li>How about: <strong>Knowledge = JTB + no false lemmas.</strong></li>
-<li>Philosophy, under this view: finding coherent conceptual schemes.</li>
+<li>Philosophy, under this view: finding the simplest principles that match our conceptualizations.</li>
 </ul>
 </div>
-<div class="gp-side-exhibit" data-gp-after-item="1">
+<div class="gp-side-exhibit" data-gp-with-item="2">
 <figure class="gp-figure">
   <img src="images/stopped-clock.jpg" alt="Painting of a long-case clock in an empty, flooded room, with a bentwood chair and a paper boat">
   <figcaption>Russell's stopped clock: true and justified, but not knowledge.</figcaption>
@@ -225,69 +243,68 @@
 <aside><div>
 <p><span class="citation" data-cites="russellHumanKnowledgeIts1948 gettierJustifiedTrueBelief1963 clarkKnowledgeGroundsComment1963">(Russell 1948; Gettier 1963; Clark 1963)</span></p>
 </div></aside></section>
-<section id="section" class="slide level1" data-gp-section="Philosophy">
-<h1></h1>
-<ul>
-<li>Think of philosophy as a game of demanding</li>
-</ul>
-</section>
-<section id="proposed-workflow" class="slide level1 gp-dense" data-gp-section="Workflow">
-<h1>Proposed workflow</h1>
+<section id="our-workflow" class="slide level1 gp-dense" data-gp-section="Workflow">
+<h1>Our workflow</h1>
 <ol type="1">
-<li>Research the philosophical landscape: theories &amp; desiderata.</li>
-<li>Evaluate theories on desiderata using independent formalization (Z3). <a href="#/" class="opens-modal" data-modal-type="iframe" data-modal-url="images/heatmap.html" data-modal-navblock="true">Heatmap</a></li>
-<li>But: “Monster-theories!” (conjunctions).
+<li>Research the philosophical landscape: theories &amp; desiderata (OpenAI Deep Research or Codex + database).</li>
+<li>Evaluate theories on desiderata using independent formalization (Z3). <a href="#/" class="opens-modal" data-modal-type="iframe" data-modal-url="images/heatmap.html" data-modal-navblock="true" data-pdf-click="Stopped clock">Heatmap</a></li>
+<li>But: “Monster-theories”!
 <ul>
 <li>Force a simplicity constraint.</li>
 </ul></li>
-<li>Pareto frontier: simpler theories that solve more problems. <a href="#/" class="opens-modal" data-modal-type="iframe" data-modal-url="images/pareto.html" data-modal-navblock="true">Pareto</a></li>
+<li>Pareto frontier: simpler theories that solve more problems. <a href="#/" class="opens-modal" data-modal-type="iframe" data-modal-url="images/pareto.html" data-modal-navblock="true" data-modal-pin="Traditional justified true belief">Pareto</a></li>
 <li>Run research flow against the criteria: come up with a theory (verbalized sampling), get feedback, revise. <a href="#/" class="opens-modal" data-modal-type="image" data-modal-url="images/workflow_v4.png" data-modal-navblock="true">Workflow</a></li>
+<li>Optimize along the frontier. <a href="#/" class="opens-modal" data-modal-type="iframe" data-modal-url="images/pareto_run.html" data-modal-navblock="true" data-modal-pin="#6 Content-producing">Pareto run</a></li>
 </ol>
 
-<!-- # A philosophical landscape {data-gp-section="Landscape"}
-
-# Some results {data-gp-section="Results"} -->
 <aside><div>
-<p><span class="citation" data-cites="zhangVerbalizedSamplingHow2026">(Zhang et al. 2026)</span></p>
+<p><span class="citation" data-cites="zhangVerbalizedSamplingHow2026">(Zhang et al. 2026)</span>. All runs use a mix of OpenAI’s Astra 6.1 &amp; Sol 5.5</p>
 </div></aside></section>
+<section id="early-results" class="slide level1" data-gp-section="Results">
+<h1>Early results</h1>
+<ul>
+<li>For 10 domains (Knowledge, Scientific Explanation, Moral Responsibility, etc.): 26 of 95 literature theories are at the frontier (27% vs.&nbsp;19% under chance). <a href="#/" class="opens-modal" data-modal-type="image" data-modal-url="images/pareto_domains.png" data-modal-navblock="true">Domains</a></li>
+<li>Does it work?</li>
+<li>52 of 100 AI-proposals make it past the frontier. <a href="#/" class="opens-modal" data-modal-type="image" data-modal-url="images/pareto_domains_run.png" data-modal-navblock="true">Domains run</a></li>
+<li>Some results are interesting, but we still get a lot of “cheating”; literature theories are under-optimized.</li>
+</ul>
+</section>
 <section id="problems-future-work" class="slide level1" data-gp-section="Outlook">
 <h1>Problems &amp; future work</h1>
 <ul>
-<li>Lack of “deep creativity” (dependent on landscape -&gt; counterexample-mining)</li>
-<li>Evaluation is hard (but cf.&nbsp;philosophy bench CITE)</li>
+<li>Lack of “deep creativity” (dependent on landscape → counterexample mining)</li>
+<li>Evaluation is hard (but cf.&nbsp;PhilosophyBench; AI Philosophy Competition)</li>
 <li>No tieback to literature (novelty)</li>
 <li>Understanding our results? Back to essays?</li>
+<li><strong>Thank you!</strong></li>
 </ul>
-</section>
+
+<aside><div>
+<p><span class="citation" data-cites="philosophybench2026 goodsellAIPhilosophyCompetition2026">(PhilosophyBench 2026; Goodsell and Thornley 2026)</span></p>
+</div></aside></section>
 <section id="literature" class="slide level1 smaller scrollable" data-layout="references" data-gp-section="References">
 <h1>Literature</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-clarkKnowledgeGroundsComment1963" class="csl-entry" role="listitem">
 Clark, Michael. 1963. <span>“Knowledge and Grounds: A Comment on <span>Mr</span>. <span>Gettier</span>’s Paper.”</span> <em>Analysis</em> 24 (2): 46–48. <a href="https://doi.org/10.1093/analys/24.2.46">https://doi.org/10.1093/analys/24.2.46</a>.
 </div>
-<div id="ref-fitelsonStepsComputationalMetaphysics2007" class="csl-entry" role="listitem">
-Fitelson, Branden, and Edward N. Zalta. 2007. <span>“Steps Toward a Computational Metaphysics.”</span> <em>Journal of Philosophical Logic</em> 36 (2): 227–47. <a href="https://doi.org/10.1007/s10992-006-9038-7">https://doi.org/10.1007/s10992-006-9038-7</a>.
-</div>
 <div id="ref-gettierJustifiedTrueBelief1963" class="csl-entry" role="listitem">
 Gettier, Edmund L. 1963. <span>“Is Justified True Belief Knowledge?”</span> <em>Analysis</em> 23 (6): 121–23. <a href="https://doi.org/10.1093/analys/23.6.121">https://doi.org/10.1093/analys/23.6.121</a>.
+</div>
+<div id="ref-goodsellAIPhilosophyCompetition2026" class="csl-entry" role="listitem">
+Goodsell, Zachary, and Elliott Thornley. 2026. <span>“<span>AI</span> Philosophy Competition: 1st Edition.”</span> September 1, 2026. <a href="https://www.zacharygoodsell.com/ai-philosophy-competition">https://www.zacharygoodsell.com/ai-philosophy-competition</a>.
 </div>
 <div id="ref-guoDeepSeekR1IncentivizesReasoning2025" class="csl-entry" role="listitem">
 Guo, Daya, Dejian Yang, Haowei Zhang, Junxiao Song, Peiyi Wang, Qihao Zhu, et al. 2025. <span>“<span>DeepSeek-R1</span> Incentivizes Reasoning in <span>LLMs</span> Through Reinforcement Learning.”</span> <em>Nature</em> 645 (8081): 633–38. <a href="https://doi.org/10.1038/s41586-025-09422-z">https://doi.org/10.1038/s41586-025-09422-z</a>.
 </div>
-<div id="ref-jiangArtificialHivemindOpenEnded2025" class="csl-entry" role="listitem">
-Jiang, Liwei, Yuanjun Chai, Margaret Li, Mickel Liu, Raymond Fok, Nouha Dziri, Yulia Tsvetkov, Maarten Sap, Alon Albalak, and Yejin Choi. 2025. <span>“Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond).”</span> In <em>Advances in Neural Information Processing Systems (<span>NeurIPS</span> 2025), Datasets and Benchmarks Track</em>. <a href="https://arxiv.org/abs/2510.22954">https://arxiv.org/abs/2510.22954</a>.
-</div>
 <div id="ref-kirkUnderstandingEffectsRLHF2024" class="csl-entry" role="listitem">
 Kirk, Robert, Ishita Mediratta, Christoforos Nalmpantis, Jelena Luketina, Eric Hambro, Edward Grefenstette, and Roberta Raileanu. 2024. <span>“Understanding the Effects of <span>RLHF</span> on <span>LLM</span> Generalisation and Diversity.”</span> In <em>International Conference on Learning Representations (<span>ICLR</span> 2024)</em>. <a href="https://arxiv.org/abs/2310.06452">https://arxiv.org/abs/2310.06452</a>.
 </div>
-<div id="ref-lambertTulu3Pushing2024" class="csl-entry" role="listitem">
-Lambert, Nathan, Jacob Morrison, Valentina Pyatkin, Shengyi Huang, Hamish Ivison, Faeze Brahman, Lester James V. Miranda, et al. 2024. <span>“<span>Tülu</span> 3: Pushing Frontiers in Open Language Model Post-Training.”</span> <em>arXiv</em>. <a href="https://arxiv.org/abs/2411.15124">https://arxiv.org/abs/2411.15124</a>.
+<div id="ref-philosophybench2026" class="csl-entry" role="listitem">
+PhilosophyBench. 2026. <span>“<span>PhilosophyBench</span>: <span>AI</span> and Philosophy Research at <span>Stanford</span>.”</span> September 2026. <a href="https://philosophybench.org/">https://philosophybench.org/</a>.
 </div>
 <div id="ref-russellHumanKnowledgeIts1948" class="csl-entry" role="listitem">
 Russell, Bertrand. 1948. <em>Human Knowledge: Its Scope and Limits</em>. London: George Allen &amp; Unwin.
-</div>
-<div id="ref-weiAsymmetryVerificationVerifiers2025" class="csl-entry" role="listitem">
-Wei, Jason. 2025. <span>“Asymmetry of Verification and Verifier’s Rule.”</span> July 15, 2025. <a href="https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law">https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law</a>.
 </div>
 <div id="ref-wuAutoformalizationLargeLanguage2022" class="csl-entry" role="listitem">
 Wu, Yuhuai, Albert Q. Jiang, Wenda Li, Markus N. Rabe, Charles Staats, Mateja Jamnik, and Christian Szegedy. 2022. <span>“Autoformalization with Large Language Models.”</span> In <em>Advances in Neural Information Processing Systems 35 (<span>NeurIPS</span> 2022)</em>. <a href="https://arxiv.org/abs/2205.12615">https://arxiv.org/abs/2205.12615</a>.
@@ -296,13 +313,6 @@ Wu, Yuhuai, Albert Q. Jiang, Wenda Li, Markus N. Rabe, Charles Staats, Mateja Ja
 Zhang, Jiayi, Simon Yu, Derek Chong, Anthony Sicilia, Michael R. Tomz, Christopher D. Manning, and Weiyan Shi. 2026. <span>“Verbalized Sampling: How to Mitigate Mode Collapse and Unlock <span>LLM</span> Diversity.”</span> In <em>International Conference on Machine Learning (<span>ICML</span> 2026)</em>. <a href="https://arxiv.org/abs/2510.01171">https://arxiv.org/abs/2510.01171</a>.
 </div>
 </div>
-</section>
-<section id="why-would-we-want-this" class="slide level1">
-<h1>Why would we want this?</h1>
-<ul>
-<li>Better philosophy?</li>
-<li>Understand better what we do when we do philosophy? (Delta between AI and human philosophy)</li>
-</ul>
 
 </section>
     </div>
@@ -526,7 +536,7 @@ Zhang, Jiayi, Simon Yu, Derek Chong, Anthony Sicilia, Michael R. Tomz, Christoph
         ]
       });
     </script>
-    <script src="gp-quarto.js?v=20261004a"></script>
+    <script src="gp-quarto.js?v=20261005c"></script>
     <script src="gp-template/js/grid-protocol.js?v=20260212a"></script>
     <script type="module" src="gp-template/js/gp-paper-shaders-halftone.js?v=20260212a"></script>
     <script>
@@ -556,20 +566,56 @@ Zhang, Jiayi, Simon Yu, Derek Chong, Anthony Sicilia, Michael R. Tomz, Christoph
             }
         }, { capture: true });
 
-        // After a click inside an iframe pop-up, keys go to the embedded page and never
-        // reach the deck. Forward ArrowRight / Enter so they still close the pop-up, and
-        // hand focus back to the deck. Escape stays with the page (e.g. to release a pin).
+        // A pop-up button can name an item to pin in its embedded page as soon as it opens:
+        // data-modal-pin="..." is a CSS selector, or the start of the item's text.
+        let pendingPin = '';
+        document.addEventListener('click', (ev) => {
+            const trigger = ev.target.closest && ev.target.closest('.opens-modal');
+            if (trigger) pendingPin = trigger.dataset.modalPin || '';
+        }, true);
+
+        function clickInPage(doc, target) {
+            let node = null;
+            try { node = doc.querySelector(target); } catch (err) { node = null; }
+            if (!node) {
+                const words = target.trim().toLowerCase();
+                node = Array.from(doc.querySelectorAll('th, td, a, button, label, [tabindex]'))
+                    .find((n) => n.textContent.trim().toLowerCase().startsWith(words));
+            }
+            if (node) node.click();
+        }
+
+        // Pages in iframe pop-ups get gp-embed.css, the deck's presentation tweaks for them,
+        // then their pin. After a click inside such a page, keys go to it and never reach
+        // the deck, so ArrowRight / Enter are forwarded to close the pop-up and focus
+        // returns to the deck. Escape stays with the page (e.g. to release a pin).
         document.addEventListener('load', (ev) => {
             const frame = ev.target;
             if (!(frame instanceof HTMLIFrameElement) || !frame.closest('.multimodal')) return;
+            const pin = frame.getAttribute('src') ? pendingPin : '';
+            pendingPin = '';
+            const ready = () => {
+                try { if (pin) clickInPage(frame.contentDocument, pin); } catch (err) { /* page not reachable */ }
+                frame.dataset.gpEmbed = 'ready';
+            };
             try {
+                const doc = frame.contentDocument;
+                if (doc && doc.head) {
+                    const link = doc.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = new URL('gp-embed.css', document.baseURI).href;
+                    link.onload = link.onerror = ready;
+                    doc.head.appendChild(link);
+                } else {
+                    ready();
+                }
                 frame.contentWindow.addEventListener('keydown', (e) => {
                     if (e.key !== 'ArrowRight' && e.key !== 'Enter') return;
                     e.preventDefault();
                     window.focus();
                     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
                 });
-            } catch (err) { /* cross-origin page (e.g. file://): its keys stay inside it */ }
+            } catch (err) { frame.dataset.gpEmbed = 'ready'; /* cross-origin page (e.g. file://): left as it is */ }
         }, true);
     })();
     </script>

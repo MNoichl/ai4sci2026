@@ -25,20 +25,56 @@
         }
     }, { capture: true });
 
-    // After a click inside an iframe pop-up, keys go to the embedded page and never
-    // reach the deck. Forward ArrowRight / Enter so they still close the pop-up, and
-    // hand focus back to the deck. Escape stays with the page (e.g. to release a pin).
+    // A pop-up button can name an item to pin in its embedded page as soon as it opens:
+    // data-modal-pin="..." is a CSS selector, or the start of the item's text.
+    let pendingPin = '';
+    document.addEventListener('click', (ev) => {
+        const trigger = ev.target.closest && ev.target.closest('.opens-modal');
+        if (trigger) pendingPin = trigger.dataset.modalPin || '';
+    }, true);
+
+    function clickInPage(doc, target) {
+        let node = null;
+        try { node = doc.querySelector(target); } catch (err) { node = null; }
+        if (!node) {
+            const words = target.trim().toLowerCase();
+            node = Array.from(doc.querySelectorAll('th, td, a, button, label, [tabindex]'))
+                .find((n) => n.textContent.trim().toLowerCase().startsWith(words));
+        }
+        if (node) node.click();
+    }
+
+    // Pages in iframe pop-ups get gp-embed.css, the deck's presentation tweaks for them,
+    // then their pin. After a click inside such a page, keys go to it and never reach
+    // the deck, so ArrowRight / Enter are forwarded to close the pop-up and focus
+    // returns to the deck. Escape stays with the page (e.g. to release a pin).
     document.addEventListener('load', (ev) => {
         const frame = ev.target;
         if (!(frame instanceof HTMLIFrameElement) || !frame.closest('.multimodal')) return;
+        const pin = frame.getAttribute('src') ? pendingPin : '';
+        pendingPin = '';
+        const ready = () => {
+            try { if (pin) clickInPage(frame.contentDocument, pin); } catch (err) { /* page not reachable */ }
+            frame.dataset.gpEmbed = 'ready';
+        };
         try {
+            const doc = frame.contentDocument;
+            if (doc && doc.head) {
+                const link = doc.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = new URL('gp-embed.css', document.baseURI).href;
+                link.onload = link.onerror = ready;
+                doc.head.appendChild(link);
+            } else {
+                ready();
+            }
             frame.contentWindow.addEventListener('keydown', (e) => {
                 if (e.key !== 'ArrowRight' && e.key !== 'Enter') return;
                 e.preventDefault();
                 window.focus();
                 document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
             });
-        } catch (err) { /* cross-origin page (e.g. file://): its keys stay inside it */ }
+        } catch (err) { frame.dataset.gpEmbed = 'ready'; /* cross-origin page (e.g. file://): left as it is */ }
     }, true);
 })();
 </script>

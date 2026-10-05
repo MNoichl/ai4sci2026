@@ -1,0 +1,38 @@
+/* Presentation tweaks for pages shown in iframe pop-ups (the pipeline's heatmap
+   and size plots). Injected by includes/after-body.html when a pop-up loads, so
+   regenerated pages pick them up unchanged. */
+
+/* Heatmap: drop the page's title block, let the columns share the free width and
+   enlarge the grid so that it reads from the back of the room. */
+body:has(#view-heat:not([hidden])) > header {
+  display: none;
+}
+
+table.heat {
+  width: 100%;
+}
+
+table.heat th.col {
+  height: 250px;
+  font-size: 16px;
+}
+
+table.heat th.col div {
+  max-height: 244px;
+}
+
+table.heat th.row {
+  width: 1%;
+  font-size: 18px;
+}
+
+table.heat td {
+  width: auto;
+  height: 29px;
+  font-size: 16px;
+}
+
+/* The pop-up's close button sits over the panel's top-right corner. */
+aside .pin {
+  margin-right: 44px;
+}

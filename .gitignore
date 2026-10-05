@@ -9,9 +9,14 @@
 !/AGENTS.md
 !/index.qmd
 !/references.bib
+
+# Scripts (PDF export)
+!/tools/
+!/tools/export_pdf.py
 !/_quarto.yml
 !/gp-quarto.css
 !/gp-quarto.js
+!/gp-embed.css
 
 # HTML includes used by _quarto.yml
 !/includes/
@@ -43,6 +48,9 @@
 !/images/workflow_v4.png
 !/images/heatmap.html
 !/images/pareto.html
+!/images/pareto_run.html
+!/images/pareto_domains.png
+!/images/pareto_domains_run.png
 
 # Rendered site (hosted)
 !/index.html
